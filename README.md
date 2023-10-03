@@ -36,7 +36,7 @@ To run the application, use the following command:
 python manage.py runserver
 ```
 
-##Database migration/config
+## Database migration/config
 Ensure you correctly configure the database by checking settings.py. Fill in the correct username, password, port, and DB name. Once done, run the migrations:
 
 ```bash
