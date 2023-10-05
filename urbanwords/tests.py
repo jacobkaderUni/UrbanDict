@@ -31,6 +31,20 @@ def test_get_definition(client):
     assert response.json()["example"] == test_word["example"]
 
 @pytest.mark.django_db
+def test_get_definition_fail(client):
+    url = reverse("get_word_definition", args=[" "])
+    response = client.get(url)
+
+    assert response.status_code != 200
+
+@pytest.mark.django_db
+def test_save_definition_fail(client):
+    url = reverse("save_word_definition", args=[" "])
+    response = client.get(url)
+    breakpoint()
+    assert response.status_code != 200
+
+@pytest.mark.django_db
 def test_save_definition(client):
     url = reverse("save_word_definition", args=["bruf"])
     response = client.post(url)

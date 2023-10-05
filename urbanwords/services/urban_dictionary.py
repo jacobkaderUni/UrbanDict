@@ -40,7 +40,9 @@ class UrbanDictionaryAPI:
         else:
             try:
                 response = requests.get(cls.URL, headers=cls.HEADERS, params={"term": term})
-                if response.status_code == 200:
+                if not response.json()['list']:
+                    return None
+                else:
                     print("Word NOT found in DB!")
                     return response.json().get('list', [{}])[0]
 
